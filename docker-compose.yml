@@ -7,9 +7,11 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./printer_data:/home/printer/printer_data:delegated
+      - ./octoprint:/home/printer/.octoprint:delegated
     ports:
       - "7125:7125"
       - "8110:8080"
+      - "82:80"
     networks:
       - dev_net
 networks:

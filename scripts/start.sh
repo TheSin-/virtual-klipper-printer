@@ -56,6 +56,12 @@ function copy_example_configs() {
     cp -R ~/example-configs/* ~/printer_data/config
     status_msg "OK!"
   fi
+  if [[ ! "$(ls -A "${HOME}/.octoprint")" ]]; then
+    status_msg "Directory ${HOME}/.octoprint is empty!"
+    status_msg "Copy octoprint configs ..."
+    cp -R ~/octoprint-defaults/* ~/.octoprint
+    status_msg "OK!"
+  fi
 }
 
 ######
@@ -105,5 +111,8 @@ link_timelapse
 sudo -S rm /bin/systemctl
 sudo -S ln -s /bin/service_control /bin/systemctl
 
+curl https://raw.githubusercontent.com/Stealthchanger/klipper-toolchanger/main/scripts/install.sh | sudo -u printer bash -s skipklipper || true
+
 cd ~ && status_msg "Everything is ready! Starting ..."
 /usr/bin/supervisord
+

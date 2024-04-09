@@ -1,0 +1,70 @@
+api:
+  key: D217E0C2A7F94BBA9648BDEFE06DC265
+plugins:
+  announcements:
+    _config_version: 1
+    channels:
+      _blog:
+        read_until: 1711358100
+      _important:
+        read_until: 1698310200
+      _octopi:
+        read_until: 1684929600
+      _plugins:
+        read_until: 1711324800
+      _releases:
+        read_until: 1712587200
+  classicwebcam:
+    _config_version: 1
+    snapshot: http://127.0.0.1:8080/?action=snapshot
+    stream: /webcam/?action=stream
+  cura:
+    cura_engine: /usr/local/bin/cura_engine
+  discovery:
+    publicPort: 80
+    upnpUuid: b5b01415-029f-4c36-9a3d-91675586eff1
+  errortracking:
+    unique_id: 8940f6cc-d51a-44c7-ac37-cf13f402e57a
+  gcodeviewer:
+    _config_version: 1
+  softwareupdate:
+    _config_version: 9
+  tracking:
+    enabled: false
+    unique_id: 441d5c39-2009-4f14-bc0a-6945dee21c22
+  virtual_printer:
+    _config_version: 1
+printerProfiles:
+  default: _default
+serial:
+  additionalPorts:
+  - /tmp/printer
+server:
+  commands:
+    serverRestartCommand: sudo supervisorctl restart octoprint
+    systemRestartCommand: sudo shutdown -r now
+    systemShutdownCommand: sudo shutdown -h now
+  firstRun: false
+  onlineCheck:
+    enabled: false
+  pluginBlacklist:
+    enabled: true
+  secretKey: sQhWm9cK8GUUP69o0M0uXRRgSiH48RNC
+  seenWizards:
+    backup: null
+    classicwebcam: 1
+    corewizard: 4
+    file_check: 1
+    tracking: null
+temperature:
+  profiles:
+  - bed: 100
+    chamber: null
+    extruder: 210
+    name: ABS
+  - bed: 60
+    chamber: null
+    extruder: 180
+    name: PLA
+webcam:
+  ffmpeg: /usr/bin/ffmpeg

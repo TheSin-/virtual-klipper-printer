@@ -12,6 +12,13 @@
 
 ---
 
+### Access OctoPrint:
+Point browser to `http://localhost:82`
+   * username: admin
+   * password: admin
+
+---
+
 ### Configure a Dummy-Webcam:
 To configure a dummy-webcam, use the following URLs:
    * Stream: `http://localhost:8110/?action=stream`
@@ -27,4 +34,3 @@ To configure a dummy-webcam, use the following URLs:
 * Rebuild image, recreate and start container : `docker-compose up -d --build`
 
 ---
-Current image size: 742.72 MB

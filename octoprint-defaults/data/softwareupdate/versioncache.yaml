@@ -1,0 +1,73 @@
+__version: 1.9.3
+file_check:
+  available: false
+  compatible: true
+  disabled: false
+  error: null
+  hash: f595880f4ef52d3ad09769ae10d6157f
+  information:
+    local:
+      name: 2024.3.27
+      value: 2024.3.27
+    needs_online: true
+    remote:
+      name: 2024.3.27
+      release_notes: https://github.com/OctoPrint/OctoPrint-FileCheck/releases/tag/2024.3.27
+      value: 2024.3.27
+  online: true
+  possible: true
+  timestamp: 1712677360.440634
+firmware_check:
+  available: false
+  compatible: true
+  disabled: false
+  error: null
+  hash: 2cc0c5c664767763a036f68d2318d063
+  information:
+    local:
+      name: 2021.10.11
+      value: 2021.10.11
+    needs_online: true
+    remote:
+      name: 2021.10.11
+      release_notes: https://github.com/OctoPrint/OctoPrint-FirmwareCheck/releases/tag/2021.10.11
+      value: 2021.10.11
+  online: true
+  possible: true
+  timestamp: 1712677360.4410362
+klipper:
+  available: false
+  compatible: true
+  disabled: false
+  error: null
+  hash: e9bdcc22951cb8008522554e018033a3
+  information:
+    local:
+      name: 0.3.9.5
+      value: 0.3.9.5
+    needs_online: true
+    remote:
+      name: OctoKlipper 0.3.9.5
+      release_notes: https://github.com/thelastWallE/OctoprintKlipperPlugin/releases/tag/0.3.9.5
+      value: 0.3.9.5
+  online: true
+  possible: true
+  timestamp: 1712677447.178534
+octoprint:
+  available: false
+  compatible: true
+  disabled: false
+  error: null
+  hash: 92378359933343c557d618119440b035
+  information:
+    local:
+      name: 1.9.3
+      value: 1.9.3
+    needs_online: true
+    remote:
+      name: 1.9.3
+      release_notes: https://github.com/OctoPrint/OctoPrint/releases/tag/1.9.3
+      value: 1.9.3
+  online: true
+  possible: true
+  timestamp: 1712677360.4411478

@@ -84,6 +84,31 @@ RUN apt-get update && apt-get install -y \
     libopenjp2-7 \
     libsodium-dev \
     libssl-dev \
+    ### Octoprint
+    python3-dev \
+    virtualenv \
+    avrdude \
+    build-essential \
+    cmake \
+    curl \
+    imagemagick \
+    ffmpeg \
+    fontconfig \
+    g++ \
+    git \
+    haproxy \
+    libffi-dev \
+    libjpeg-dev \
+    libjpeg62-turbo \
+    libprotobuf-dev \
+    libudev-dev \
+    libusb-1.0-0-dev \
+    libv4l-dev \
+    openssh-client \
+    v4l-utils \
+    xz-utils \
+    zlib1g-dev \
+    x265 \
     ### clean up
     && apt-get -y autoremove \
     && apt-get clean \
@@ -117,7 +142,22 @@ COPY --from=builder --chown=printer:printer /build/simulavr.elf ./simulavr.elf
 COPY --from=builder --chown=printer:printer /build/mjpg-streamer/mjpg-streamer-experimental ./mjpg-streamer
 
 # Copy example configs and dummy streamer images
-COPY ./example-configs/ ./example-configs/
-COPY ./mjpg_streamer_images/ ./mjpg_streamer_images/
+COPY --chown=printer:printer ./example-configs/ ./example-configs/
+COPY --chown=printer:printer ./octoprint-defaults/ ./octoprint-defaults/
+COPY --chown=printer:printer ./mjpg_streamer_images/ ./mjpg_streamer_images/
+
+#### Octoprint
+RUN git clone https://github.com/OctoPrint/OctoPrint.git \
+    && virtualenv -p python3 /home/printer/oprint
+WORKDIR /home/printer/OctoPrint
+RUN /home/printer/oprint/bin/pip install .
+
+WORKDIR /home/printer
+RUN git clone https://github.com/thelastWallE/OctoprintKlipperPlugin.git
+WORKDIR /home/printer/OctoprintKlipperPlugin
+RUN /home/printer/oprint/bin/pip install .
+
+WORKDIR /home/printer
+RUN rm -rf /home/printer/OctoPrintKlipperPlugin
 
 ENTRYPOINT ["/bin/start"]
