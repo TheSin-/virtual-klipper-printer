@@ -111,8 +111,8 @@ link_timelapse
 sudo -S rm /bin/systemctl
 sudo -S ln -s /bin/service_control /bin/systemctl
 
-curl https://raw.githubusercontent.com/Stealthchanger/klipper-toolchanger/main/scripts/install.sh | sudo -u printer bash -s skipklipper || true
+git config --global --add safe.directory /home/printer/klipper-toolchanger
+cd klipper-toolchanger && bash scripts/install.sh skipklipper || true
 
 cd ~ && status_msg "Everything is ready! Starting ..."
-/usr/bin/supervisord
-
+sudo /usr/bin/supervisord

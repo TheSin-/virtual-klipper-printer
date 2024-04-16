@@ -8,7 +8,13 @@
 ### Setup Instructions:
 1. Clone this repository
 2. Open a terminal in the cloned folder
-3. Run `docker-compose up -d` to build the docker image and start the container in detached mode
+3. Run `git clone git@github.com:DraftShift/klipper-toolchanger.git`
+4. Run `docker-compose up -d` to build the docker image and start the container in detached mode
+
+---
+
+### Access Mainsail:
+Point browser to `http://localhost:83`
 
 ---
 
