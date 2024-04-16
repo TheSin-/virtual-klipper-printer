@@ -53,13 +53,13 @@ function copy_example_configs() {
   if [[ ! "$(ls -A "${HOME}/printer_data/config")" ]]; then
     status_msg "Directory ${HOME}/printer_data/config is empty!"
     status_msg "Copy example configs ..."
-    cp -R ~/example-configs/* ~/printer_data/config
+    cp -R ~/example-configs/* ~/printer_data/config/
     status_msg "OK!"
   fi
   if [[ ! "$(ls -A "${HOME}/.octoprint")" ]]; then
     status_msg "Directory ${HOME}/.octoprint is empty!"
     status_msg "Copy octoprint configs ..."
-    cp -R ~/octoprint-defaults/* ~/.octoprint
+    cp -R ~/octoprint-defaults/* ~/.octoprint/
     status_msg "OK!"
   fi
 }

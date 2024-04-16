@@ -109,6 +109,26 @@ RUN apt-get update && apt-get install -y \
     xz-utils \
     zlib1g-dev \
     x265 \
+    ### Mainsail
+    git \
+    unzip \
+    python3-virtualenv \
+    python3-dev \
+    libffi-dev \
+    build-essential \
+    libncurses-dev \
+    avrdude \
+    gcc-avr \
+    binutils-avr \
+    avr-libc \
+    stm32flash \
+    dfu-util \
+    libnewlib-arm-none-eabi \
+    gcc-arm-none-eabi \
+    binutils-arm-none-eabi \
+    libusb-1.0-0 \
+    libusb-1.0-0-dev \
+    nginx \
     ### clean up
     && apt-get -y autoremove \
     && apt-get clean \
@@ -128,6 +148,13 @@ COPY scripts/service_control.sh /bin/service_control
 RUN chmod +x /bin/start
 RUN chmod +x /bin/service_control
 
+### Mainsail
+COPY config/nginx/sites-available/* /etc/nginx/sites-available/
+COPY config/nginx/conf.d/* /etc/nginx/conf.d/
+
+RUN rm -rf /etc/nginx/sites-enabled/default \
+    && ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
+
 USER printer
 WORKDIR /home/printer
 
@@ -146,7 +173,7 @@ COPY --chown=printer:printer ./example-configs/ ./example-configs/
 COPY --chown=printer:printer ./octoprint-defaults/ ./octoprint-defaults/
 COPY --chown=printer:printer ./mjpg_streamer_images/ ./mjpg_streamer_images/
 
-#### Octoprint
+### Octoprint
 RUN git clone https://github.com/OctoPrint/OctoPrint.git \
     && virtualenv -p python3 /home/printer/oprint
 WORKDIR /home/printer/OctoPrint
@@ -159,5 +186,15 @@ RUN /home/printer/oprint/bin/pip install .
 
 WORKDIR /home/printer
 RUN rm -rf /home/printer/OctoPrintKlipperPlugin
+
+### Mainsail
+RUN mkdir /home/printer/mainsail
+
+WORKDIR /home/printer/mainsail
+RUN curl -LJOs https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip -o mainsail.zip \
+    && unzip -q mainsail.zip \
+    && rm mainsail.zip
+
+WORKDIR /home/printer
 
 ENTRYPOINT ["/bin/start"]

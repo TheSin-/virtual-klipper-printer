@@ -12,6 +12,7 @@ services:
       - "7125:7125"
       - "8110:8080"
       - "82:80"
+      - "83:81"
     networks:
       - dev_net
 networks:
