@@ -60,6 +60,7 @@ function copy_example_configs() {
     status_msg "Directory ${HOME}/.octoprint is empty!"
     status_msg "Copy octoprint configs ..."
     cp -R ~/octoprint-defaults/* ~/.octoprint/
+    ln -s /home/printer/printer_data/gcodes /home/printer/.octoprint/uploads
     status_msg "OK!"
   fi
 }
