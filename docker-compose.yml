@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./printer_data:/home/printer/printer_data:delegated
-      - ./octoprint:/home/printer/.octoprint:delegated
-      - ./klipper-toolchanger:/home/printer/klipper-toolchanger:delegated
+      - ./printer_data:/home/printer/printer_data
+      - ./octoprint:/home/printer/.octoprint
+      - ./klipper-toolchanger:/home/printer/klipper-toolchanger
     ports:
       - "7125:7125"
       - "8110:8080"
